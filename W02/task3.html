@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title>W02: task2</title>
+	</head>
+	<body>
+		<p id="target"></p>
+		v0 :
+		<input type="text" id="v0x">
+		<input type="text" id="v0y">
+		<input type="text" id="v0z">
+		<br>
+		v1 :
+		<input type="text" id="v1x">
+		<input type="text" id="v1y">
+		<input type="text" id="v1z">
+		<br>
+		v2 :
+		<input type="text" id="v2x">
+		<input type="text" id="v2y">
+		<input type="text" id="v2z">
+		<br>
+		<input type="button" onclick="clickBtn()" value="go">
+		<input type="text" id="ans">
+		
+		<script src="vec3.js"></script>
+		<script>
+			function clickBtn()
+			{
+				var x0 = parseInt(document.getElementById("v0x").value);
+				var y0 = parseInt(document.getElementById("v0y").value);
+				var z0 = parseInt(document.getElementById("v0z").value);
+				
+				var x1 = parseInt(document.getElementById("v1x").value);
+				var y1 = parseInt(document.getElementById("v1y").value);
+				var z1 = parseInt(document.getElementById("v1z").value);
+				
+				var x2 = parseInt(document.getElementById("v2x").value);
+				var y2 = parseInt(document.getElementById("v2y").value);
+				var z2 = parseInt(document.getElementById("v2z").value);
+				
+				var v0 = new Vec3(x0, y0, z0);
+				var v1 = new Vec3(x1, y1, z1);
+				var v2 = new Vec3(x2, y2, z2);
+					
+				document.getElementById("ans").value = AreaOfTriangle(v0, v1, v2);
+			}
+
+			function AreaOfTriangle(v0, v1, v2) 
+			{
+				var v01 = new Vec3(v1.x-v0.x, v1.y-v0.y, v1.z-v0.z);
+				var v02 = new Vec3(v2.x-v0.x, v2.y-v0.y, v2.z-v0.z);
+				var s = (1 / 2) * Math.sqrt(
+					Math.pow(v01.y * v02.z - v01.z * v02.y, 2) + 
+					Math.pow(v01.z * v02.z - v01.x * v02.z, 2) + 
+					Math.pow(v01.x * v02.y - v01.y * v02.x, 2)
+				);
+				return s;
+			}
+		</script>
+	</body>
+</html>
