@@ -1,7 +1,7 @@
 d3.csv("https://218x107x.github.io/InfoVis2021/W10/task2_data.csv")
     .then( data => {
         // Convert strings to numbers
-        data.forEach( d => { d.x = +d.x; d.y = +d.y; });
+        data.forEach( d => { d.population = +d.population; d.infected = +d.infected; });
         
         var config = {
             parent: '#drawing_region',

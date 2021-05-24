@@ -1,4 +1,7 @@
-color,x,y,r
-red,10,10,5
-red,20,30,10
-red,30,40,15
+name,population,infected
+Kyoto,2610357,38
+Hyogo,5534800,86
+Nara,1364316,10
+Osaka,8839469,216
+Siga,1412916,23
+Wakayama,963579,4
