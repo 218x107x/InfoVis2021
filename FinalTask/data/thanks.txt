@@ -1,0 +1,5 @@
+・COVID-19-geographic-disbtribution-worldwide.csv：
+https://data.europa.eu/data/datasets/covid-19-coronavirus-data?locale=en
+
+・WHR20_DataForFigure2.1.xls：
+https://data.world/makeovermonday/2020w19-world-happiness-report-2020
