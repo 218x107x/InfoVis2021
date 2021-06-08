@@ -1,7 +1,7 @@
-d3.csv("https://218x107x.github.io/InfoVis2021/W04/w04_task2.csv")
+d3.csv("https://218x107x.github.io/InfoVis2021/FinalTask/data/COVID-19-geographic-disbtribution-worldwide.csv")
     .then( data => {
         // Convert strings to numbers
-        data.forEach( d => { d.x = +d.x; d.y = +d.y; });
+        // data.forEach( d => { d.x = +d.x; d.y = +d.y; });
         var config = {
             width: 512,
             height: 256,
