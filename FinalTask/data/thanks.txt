@@ -1,5 +1,8 @@
-・COVID-19-geographic-disbtribution-worldwide.csv：
-https://data.europa.eu/data/datasets/covid-19-coronavirus-data?locale=en
+・https://github.com/owid/covid-19-data/blob/master/public/data/latest/owid-covid-latest.csv:
+Hasell, J., Mathieu, E., Beltekian, D. et al. A cross-country database of COVID-19 testing. Sci Data 7, 345 (2020). https://doi.org/10.1038/s41597-020-00688-8
 
-・WHR20_DataForFigure2.1.xls：
+・Happiness Score, "WHR20_DataForFigure2.1.xls"
 https://data.world/makeovermonday/2020w19-world-happiness-report-2020
+
+・Shape file, "ne_110m_admin_0_countries":
+http://www.naturalearthdata.com/
