@@ -4,19 +4,35 @@
     </head>
     <style>
         body {
-	     font-family: system-ui;
+	        font-family: system-ui;
         }
         .container {
             display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+        .graph_container {
+            display: flex;
+            align-items: flex-start;
+        }
+        .left_container {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+        .right_container {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
         }
         #tooltip {
-	     position: absolute;
-	     opacity: 0;
-	     background: #fff;
-	     border: 1px solid #ddd;
-	     font-size: 12px;
-	     font-weight: 600;
-	     padding: 2px 8px;
+            position: absolute;
+            opacity: 0;
+            background: #fff;
+            border: 1px solid #ddd;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 8px;
         }
         .tooltip-label {
             font-weight: 1000;
@@ -26,12 +42,19 @@
     <body>
         <div id="tooltip"></div>
         <div class="container">
-            <div><svg id="drawing_region_scatter", width="840", height="840"></svg></div>
-            <div><svg id="drawing_region_covid", width="840", height="840"></svg></div>
-            <div><svg id="drawing_region_happiness", width="840", height="840"></svg></div>
-            <div><select id = "selectBox_covid"></select></div>
-            <div><select id = "selectBox_happiness"></select></div>
-        </div>        
+            <div><svg id="drawing_region_title", width="1240", height="64"></svg></div>
+            <div class="graph_container">
+                <div class="left_container">
+                    <div><svg id="drawing_region_scatter"></svg></div>
+                    <div><select id = "selectBox_covid"></select></div>
+                    <div><select id = "selectBox_happiness"></select></div>
+                </div>
+                <div class="right_container">
+                    <div><svg id="drawing_region_covid"></svg></div>
+                    <div><svg id="drawing_region_happiness"></svg></div>
+                </div>
+            </div>
+        </div>
         <script src="https://d3js.org/d3.v6.min.js"></script>
         <script src="main.js"></script>
         <script src="ScatterPlot.js"></script>

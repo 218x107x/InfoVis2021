@@ -65,46 +65,50 @@ function main() {
     let self = this;
 
     // title
-    d3.select('#drawing_region').append('g')
-            .append('text')
-            .style('font-size', `24px`)
-            .attr('x', 32)
-            .attr('y', 32)
-            .attr('text-anchor', 'middle')
-            .text(`TITLE`);
+    d3.select('#drawing_region_title').style(`background-color`, `orange`).append('g')
+        .append('text')
+        .style('font-size', `30px`)
+        .attr('x', 16)
+        .attr('y', 42)
+        .attr('text-anchor', 'start')
+        .text(`Relationship between the number of people infected with coronavirus and happiness score`)
 
     // graphs
     self.scatter_plot = new ScatterPlot({
         parent: '#drawing_region_scatter',
         width : 500,
         height: 500,
-        margin: {top:10, right:10, bottom:100, left:100},
+        margin: {top:30, right:10, bottom:100, left:120},
         xvalue: function(d){ return d[`Ladder score`]; },
         yvalue: function(d){ return d[`total_cases`]; },
         xlabel: 'happiness score',
         ylabel: 'COVID cases',
-        fontsize: `16px`
+        fontsize: `20px`
     }, data);
     self.scatter_plot.update();
 
     happiness_world_map = new WorldColorMap({
         parent: '#drawing_region_happiness',
-        width : 320,
+        width : 560,
         height: 320,
-        scale : 40,
+        viewBox: `0 0 560 160`,
+        scale : 64,
         margin: {top:10, right:50, bottom:50, left:10},
         value : function(d){ return d[`Ladder score`]; },
+        color_theme: d3.interpolateMagma,
         label : `Happiness score`
     }, data, world_map);
     self.happiness_world_map.update();
 
     self.covid_world_map = new WorldColorMap({
         parent: '#drawing_region_covid',
-        width : 320,
+        width : 560,
         height: 320,
-        scale : 40,
+        viewBox: `0 0 560 160`,
+        scale : 64,
         margin: {top:10, right:50, bottom:50, left:10},
         value : function(d){ return d[`total_cases`]; },
+        color_theme: d3.interpolateOrPu,
         label : `COVID cases`
     }, data, world_map);
     self.covid_world_map.update();
@@ -112,6 +116,9 @@ function main() {
     // happiness score kind selection box
     var options = self.score_kinds;
     var happiness_selection = d3.select("#selectBox_happiness")
+        .style("width","512")
+        .style("height","32")
+        .style("font-size", "20")   
     happiness_selection.selectAll("option").data(options).enter()
         .append("option")
         .attr("value", d => { return d; })
@@ -124,6 +131,9 @@ function main() {
     // covid cases kind selection box
     options = self.cases_kinds;
     var covid_selection = d3.select("#selectBox_covid")
+        .style("width","512")
+        .style("height","32")
+        .style("font-size", "20")
     covid_selection.selectAll("option").data(options).enter()
         .append("option")
         .attr("value", d => { return d; })

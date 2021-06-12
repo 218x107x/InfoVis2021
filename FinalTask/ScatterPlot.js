@@ -62,7 +62,7 @@ class ScatterPlot {
         // scaling domain
         const xmin = d3.min( self.data, self.config.xvalue );
         const xmax = d3.max( self.data, self.config.xvalue );
-        self.xscale.domain( [xmin, xmax] );
+        self.xscale.domain( [xmax, xmin] );
 
         const ymin = d3.min( self.data, self.config.yvalue );
         const ymax = d3.max( self.data, self.config.yvalue );
@@ -86,7 +86,7 @@ class ScatterPlot {
             .join('circle');
 
         const circle_color = 'steelblue';
-        const circle_radius = 8;
+        const circle_radius = 4;
         circles
             .attr("r", circle_radius )
             .attr("cx", d => self.xscale( self.config.xvalue(d) ) )
@@ -137,7 +137,7 @@ class ScatterPlot {
             .attr('text-anchor', 'middle')
             .text( self.config.xlabel );
 
-        const ylabel_space = 60;
+        const ylabel_space = 110;
         var ylabel = self.chart.select(`#ylabel`);
         if(ylabel.empty())
             ylabel = self.chart.append('text').attr(`id`, `ylabel`);

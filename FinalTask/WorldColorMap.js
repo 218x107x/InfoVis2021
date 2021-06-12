@@ -15,9 +15,11 @@ class WorldColorMap {
             parent: config.parent,
             width : config.width  || 256,
             height: config.height || 256,
+            viewBox: config.viewBox || `0 0 256 256`,
             scale : config.scale  || 50,
             margin: config.margin || {top:10, right:10, bottom:10, left:10},
             value : config.value,
+            color_theme: config.color_theme || d3.interpolateYlOrRd,
             label : config.label  || ``,
         }
         this.data       = data;
@@ -30,7 +32,8 @@ class WorldColorMap {
 
         self.svg = d3.select( self.config.parent )
             .attr("width", self.config.width)
-            .attr("height", self.config.height);
+            .attr("height", self.config.height)
+            .attr("viewBox", self.config.viewBox);
 
         self.chart = self.svg.append('g')
             .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
@@ -55,7 +58,7 @@ class WorldColorMap {
         self.min = d3.min(data, self.config.value);
         self.max = d3.max(data, self.config.value);
 
-        self.cscale = d3.scaleSequential(d3.interpolateYlOrRd)
+        self.cscale = d3.scaleSequential(self.config.color_theme)
             .domain([self.min, self.max]);
 
         self.colorByName = ( country => {; 
@@ -118,9 +121,9 @@ class WorldColorMap {
         if(label.empty())
             label = self.chart.append(`text`).attr(`id`, `label`);
             
-        label.style('font-size', '16px')
+        label.style('font-size', '20px')
             .attr('x', self.inner_width / 2)
-            .attr('y', self.inner_height + self.config.margin.top + 20)
+            .attr('y', self.inner_height + self.config.margin.top - 50)
             .attr('text-anchor', 'middle')
             .text( self.config.label );
     }
